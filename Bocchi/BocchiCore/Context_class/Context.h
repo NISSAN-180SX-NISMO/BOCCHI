@@ -4,7 +4,7 @@
 #include <memory>
 #include "../ComponentRegistry/ComponentRegistry.h"
 
-typedef std::unordered_map<std::string, std::any> ContextMap;
+typedef std::unordered_map<std::string, Object*> ContextMap;
 
 class Context {
 private:
@@ -16,10 +16,9 @@ public:
     Context(Context&&) = delete;
 
     template<class ComponentType>
-    std::shared_ptr<BaseComponentType> getComponent(const std::string& componentName) {
+    ComponentType* getComponent(const std::string& componentName) {
         std::cout << "Context::getComponent: " << std::endl;
-
-        return std::any_cast<std::shared_ptr<ComponentType>>(this->contextMap[componentName]);
+        return reinterpret_cast<ComponentType*>(this->contextMap[componentName]);
     }
     ContextMap getContextMap();
     static std::shared_ptr<Context>& getContext();

@@ -9,16 +9,16 @@
 class BocchiApplication {
 private:
     std::shared_ptr<Context> context;
-    static std::multimap<std::shared_ptr<MenuCase>, std::shared_ptr<MenuCase>> menuMap;
-    std::vector<std::shared_ptr<MenuCase>> buildMenuCaseVector();
-    void buildMenuMap(const std::vector<std::shared_ptr<MenuCase>>&);
+    static std::multimap<MenuCase*, MenuCase*> menuMap;
+    std::vector<MenuCase*> buildMenuCaseVector();
+    void buildMenuMap(const std::vector<MenuCase*>&);
     struct Statement {
-        std::shared_ptr<MenuCase> menuCase;
+        MenuCase* menuCase;
         size_t lvl;
     } currentStatement;
     void show();
 public:
-    BocchiApplication(std::shared_ptr<MenuCase> mainCase);
+    BocchiApplication(MenuCase* mainCase);
     int run();
 
 

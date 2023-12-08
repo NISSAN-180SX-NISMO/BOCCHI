@@ -13,7 +13,7 @@ Context::Context() {
 }
 
 std::shared_ptr<Context> &Context::getContext() {
-    if (context == nullptr) context = std::unique_ptr<Context>(new Context());
+    if (context == nullptr) context = std::shared_ptr<Context>(new Context());
     return context;
 }
 

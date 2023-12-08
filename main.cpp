@@ -36,6 +36,6 @@ public:
 
 int main() {
     std::cout << "main: " << std::endl;
-    BocchiApplication bocchiApplication(Context::getContext()->getComponent<MainMenuCase, MenuCase>("MainMenuCase"));
+    BocchiApplication bocchiApplication(Context::getContext()->getComponent<MainMenuCase>("MainMenuCase"));
     return bocchiApplication.run();
 }

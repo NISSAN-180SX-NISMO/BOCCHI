@@ -8,6 +8,7 @@
 #include <iostream>
 #include <any>
 #include "ComponentRegistryException.h"
+#include "Object.h"
 
 #define COMPONENT(className) \
 class className; \
@@ -20,15 +21,15 @@ public: \
 inline className##ComponentFactory className##Factory; \
 class className
 
-typedef std::unordered_map<std::string, std::function<std::any()>> RegistryMap;
+typedef std::unordered_map<std::string, std::function<Object*()>> RegistryMap;
 
 namespace ComponentRegistry {
     inline RegistryMap registryMap;
 
     template <class ComponentType>
     inline void registerComponent(const std::string& componentName) {
-        registryMap[componentName] = []() -> std::shared_ptr<ComponentType>  {
-            return std::make_shared<ComponentType>();
+        registryMap[componentName] = []() -> Object*  {
+            return reinterpret_cast<Object*>(new ComponentType());
         };
 #ifdef DEBUG
         std::cout << componentName << " with sizeof = " << sizeof(ComponentType) << " registered" << std::endl;
@@ -36,10 +37,10 @@ namespace ComponentRegistry {
     }
 
     template <class ComponentType>
-    inline std::shared_ptr<ComponentType> initComponent(const std::string& componentName){
+    inline ComponentType* initComponent(const std::string& componentName){
         std::cout << componentName << "ComponentRegistry::initComponent: " << std::endl;
         if (registryMap.find(componentName) == registryMap.end()) throw ComponentRegistryExceptionTypeNotFound("Component not found!");
-        return std::any_cast<std::shared_ptr<ComponentType>>(registryMap[componentName]());
+        return reinterpret_cast<ComponentType*>(registryMap[componentName]());
     }
 };
 

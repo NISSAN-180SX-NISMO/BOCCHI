@@ -2,9 +2,9 @@
 #include <utility>
 #include <conio.h>
 
-std::multimap<std::shared_ptr<MenuCase>, std::shared_ptr<MenuCase>> BocchiApplication::menuMap;
+std::multimap<MenuCase*, MenuCase*> BocchiApplication::menuMap;
 
-BocchiApplication::BocchiApplication(std::shared_ptr<MenuCase> mainCase) {
+BocchiApplication::BocchiApplication(MenuCase* mainCase) {
 
     std::cout  << "BocchiApplication::constructor: " << std::endl;
 
@@ -20,19 +20,19 @@ int BocchiApplication::run() {
    }
 }
 
-std::vector<std::shared_ptr<MenuCase>> BocchiApplication::buildMenuCaseVector() {
+std::vector<MenuCase*> BocchiApplication::buildMenuCaseVector() {
 
     std::cout << "BocchiApplication::buildMenuCaseVector()" << std::endl;
 
     this->context = Context::getContext();
-    std::vector<std::shared_ptr<MenuCase>> menuCaseVector;
+    std::vector<MenuCase*> menuCaseVector;
     for (auto& menuCase : this->context->getContextMap())
-        menuCaseVector.push_back(std::any_cast<std::shared_ptr<MenuCase>>(menuCase.second));
+        menuCaseVector.push_back(reinterpret_cast<MenuCase*>(menuCase.second));
 
     return menuCaseVector;
 }
 
-void BocchiApplication::buildMenuMap(const std::vector<std::shared_ptr<MenuCase>>& menuCaseVector) {
+void BocchiApplication::buildMenuMap(const std::vector<MenuCase*>& menuCaseVector) {
     for (auto& menuCase : menuCaseVector){
 
         std::cout << "BocchiApplication::buildMenuMap: " << std::endl;
