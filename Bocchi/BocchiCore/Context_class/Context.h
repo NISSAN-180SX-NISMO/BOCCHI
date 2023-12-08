@@ -17,7 +17,9 @@ public:
 
     template<class ComponentType>
     ComponentType* getComponent(const std::string& componentName) {
+#ifdef DEBUG
         std::cout << "Context::getComponent: " << std::endl;
+#endif
         return reinterpret_cast<ComponentType*>(this->contextMap[componentName]);
     }
     ContextMap getContextMap();

@@ -38,7 +38,9 @@ namespace ComponentRegistry {
 
     template <class ComponentType>
     inline ComponentType* initComponent(const std::string& componentName){
+#ifdef DEBUG
         std::cout << componentName << "ComponentRegistry::initComponent: " << std::endl;
+#endif
         if (registryMap.find(componentName) == registryMap.end()) throw ComponentRegistryExceptionTypeNotFound("Component not found!");
         return reinterpret_cast<ComponentType*>(registryMap[componentName]());
     }

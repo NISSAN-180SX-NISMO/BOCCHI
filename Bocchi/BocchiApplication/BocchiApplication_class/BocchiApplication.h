@@ -5,6 +5,7 @@
 #include "map"
 #include "../../BocchiCore/Context_class/Context.h"
 #include "../MenuCase.h"
+#include "../IncludeComponents.h"
 
 class BocchiApplication {
 private:
