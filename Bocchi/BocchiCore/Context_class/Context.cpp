@@ -16,3 +16,7 @@ std::shared_ptr<Context> &Context::getContext() {
     if (context == nullptr) context = std::unique_ptr<Context>(new Context());
     return context;
 }
+
+ContextMap Context::getContextMap() {
+    return this->contextMap;
+}

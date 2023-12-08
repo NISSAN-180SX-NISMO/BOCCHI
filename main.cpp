@@ -1,18 +1,41 @@
 #define DEBUG
-#include "BocchiApplication/BocchiCore/Context_class/Context.h"
-#include "TestClass.h"
+#include "Bocchi/BocchiApplication/BocchiApplication_class/BocchiApplication.h"
+#include "MainMenuCase.h"
+
+COMPONENT(TestMenu1);
+class TestMenu1 : public MenuCase {
+public:
+    std::string getTitle() override {
+        return "1) First menu case";
+    }
+
+    void exec() override {
+
+    }
+
+    std::string getParent() override {
+        return "MainMenuCase";
+    }
+};
+
+COMPONENT(TestMenu2);
+class TestMenu2 : public MenuCase {
+public:
+    std::string getTitle() override {
+        return "2) Second menu case";
+    }
+
+    void exec() override {
+
+    }
+
+    std::string getParent() override {
+        return "MainMenuCase";
+    }
+};
 
 int main() {
-    std::cout << "\nDefault definition" << std::endl;
-    std::shared_ptr<TestClass> testClass = ComponentRegistry::initComponent<TestClass>("TestClass");
-    std::shared_ptr<TestClass> testClass2 = ComponentRegistry::initComponent<TestClass>("TestClass");
-    std::shared_ptr<TestClass> testClass3 = ComponentRegistry::initComponent<TestClass>("TestClass");
-
-    std::cout << "\nSingleton definition" << std::endl;
-    auto context = Context::getContext();
-    std::shared_ptr<TestClass> testClass4 = context->getComponent<TestClass>("TestClass");
-    std::shared_ptr<TestClass> testClass5 = context->getComponent<TestClass>("TestClass");
-    std::shared_ptr<TestClass> testClass6 = context->getComponent<TestClass>("TestClass");
-
-    return 0;
+    std::cout << "main: " << std::endl;
+    BocchiApplication bocchiApplication(Context::getContext()->getComponent<MainMenuCase, MenuCase>("MainMenuCase"));
+    return bocchiApplication.run();
 }

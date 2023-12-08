@@ -16,9 +16,12 @@ public:
     Context(Context&&) = delete;
 
     template<class ComponentType>
-    std::shared_ptr<ComponentType> getComponent(const std::string& componentName) {
+    std::shared_ptr<BaseComponentType> getComponent(const std::string& componentName) {
+        std::cout << "Context::getComponent: " << std::endl;
+
         return std::any_cast<std::shared_ptr<ComponentType>>(this->contextMap[componentName]);
     }
+    ContextMap getContextMap();
     static std::shared_ptr<Context>& getContext();
 };
 

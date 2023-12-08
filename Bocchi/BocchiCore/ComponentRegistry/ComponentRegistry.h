@@ -7,7 +7,6 @@
 #include <memory>
 #include <iostream>
 #include <any>
-#include "ParentComponent.h"
 #include "ComponentRegistryException.h"
 
 #define COMPONENT(className) \
@@ -38,6 +37,7 @@ namespace ComponentRegistry {
 
     template <class ComponentType>
     inline std::shared_ptr<ComponentType> initComponent(const std::string& componentName){
+        std::cout << componentName << "ComponentRegistry::initComponent: " << std::endl;
         if (registryMap.find(componentName) == registryMap.end()) throw ComponentRegistryExceptionTypeNotFound("Component not found!");
         return std::any_cast<std::shared_ptr<ComponentType>>(registryMap[componentName]());
     }
