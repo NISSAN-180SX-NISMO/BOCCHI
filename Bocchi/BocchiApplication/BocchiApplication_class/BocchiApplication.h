@@ -6,20 +6,31 @@
 #include "../../BocchiCore/Context_class/Context.h"
 #include "../MenuCase.h"
 #include "../IncludeComponents.h"
+#include "../../EventSystem/ObserverInterface.h"
+#include "../MenuState.h"
+#include "../../EventSystem/ObservedInterface.h"
+#include "../BocchiApplicationStateUpdater.h"
+#include "../../EventSystem/ConsoleHandler.h"
+#include <Windows.h>
+
+#define print(x) printf((x + "\n").c_str())
+#define green_print(x) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_GREEN | FOREGROUND_INTENSITY); print(x); SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_GREEN)
 
 class BocchiApplication {
 private:
     std::shared_ptr<Context> context;
-    static std::multimap<MenuCase*, MenuCase*> menuMap;
+    static std::shared_ptr<std::multimap<MenuCase*, MenuCase*>> menuMap;
     std::vector<MenuCase*> buildMenuCaseVector();
     void buildMenuMap(const std::vector<MenuCase*>&);
-    struct Statement {
-        MenuCase* menuCase;
-        size_t lvl;
-    } currentStatement;
+    std::shared_ptr<MenuState> currentState = std::make_shared<MenuState>();
+    std::shared_ptr<ObserverInterface> menuStateUpdater = std::make_shared<BocchiApplicationStateUpdater>(this->currentState, BocchiApplication::menuMap);
+    std::shared_ptr<ConsoleHandler> consoleHandler;
     void show();
+    explicit BocchiApplication(MenuCase* mainCase);
+    static std::shared_ptr<BocchiApplication> instance;
 public:
-    BocchiApplication(MenuCase* mainCase);
+    static std::shared_ptr<BocchiApplication> getInstance(MenuCase* mainCase);
+    static std::shared_ptr<BocchiApplication> getInstance();
     int run();
 
 
