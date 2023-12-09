@@ -31,5 +31,13 @@ add_executable(Bocchi main.cpp
         Bocchi/BocchiCore/ComponentRegistry/Object.h
         Bocchi/BocchiApplication/IncludeComponents.h
         TestCases/TestCase1.h
-        TestCases/TestCase2.h)
+        TestCases/TestCase2.h
+        Bocchi/EventSystem/Event.h
+        Bocchi/EventSystem/ConsoleHandler.h
+        Bocchi/EventSystem/ObservedInterface.h
+        Bocchi/EventSystem/ObserverInterface.h
+        Bocchi/BocchiApplication/BocchiApplicationStateUpdater.h
+        Bocchi/BocchiApplication/MenuState.h
+        Bocchi/Utils/Carousel.h
+        TestCases/TestCase3.h)
 add_dependencies(Bocchi scan_components)
