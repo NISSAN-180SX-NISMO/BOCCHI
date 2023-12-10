@@ -1,4 +1,5 @@
 //#define DEBUG
+//#define LISING
 #include "Bocchi/BocchiApplication/BocchiApplication_class/BocchiApplication.h"
 
 

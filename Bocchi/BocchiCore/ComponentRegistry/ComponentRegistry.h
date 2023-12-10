@@ -1,12 +1,14 @@
 #pragma once
 #ifndef BOCCHI_COMPONENTREGISTRY_H
 #define BOCCHI_COMPONENTREGISTRY_H
+#ifndef LISING
 #include <unordered_map>
 #include <string>
 #include <functional>
 #include <memory>
 #include <iostream>
 #include <any>
+#endif
 #include "ComponentRegistryException.h"
 #include "Object.h"
 

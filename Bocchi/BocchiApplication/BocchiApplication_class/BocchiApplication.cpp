@@ -1,9 +1,6 @@
 #include "BocchiApplication.h"
 #include "../../EventSystem/ConsoleHandler.h"
-#include <memory>
-#include <utility>
-#include <algorithm>
-#include <queue>
+
 
 std::shared_ptr<std::multimap<MenuCase*, MenuCase*>> BocchiApplication::menuMap = std::make_shared<std::multimap<MenuCase*, MenuCase*>>();
 
@@ -65,34 +62,42 @@ void BocchiApplication::show() {
         })->first;
     }
 
-    size_t lvlShift = 0;
-    auto menu = BocchiApplication::menuMap->equal_range(Context::getContext()->getComponent<MainMenuCase>("MainMenuCase"));
-    for (auto it = menu.first; it != menu.second; ++it) {
-        if (this->currentState->rootMenuCase != Context::getContext()->getComponent<MainMenuCase>("MainMenuCase")) {
-            if (!currentMenuCasePath.empty()) {
-                if (it->second == currentMenuCasePath.top()) {
-                    while (!currentMenuCasePath.empty()) {
-                        for (int i = 0; i < lvlShift; ++i) std::cout << "\t";
-                        print(currentMenuCasePath.top()->getTitle());
-                        currentMenuCasePath.pop();
-                        lvlShift++;
-                    }
-                    auto submenmu = BocchiApplication::menuMap->equal_range(this->currentState->rootMenuCase);
-                    for (auto jt = submenmu.first; jt != submenmu.second; ++jt) {
-                        for (int i = 0; i < currentState->lvl; ++i) std::cout << "\t";
-                        if (jt->second->getTitle() == this->currentState->choosedMenuCase->getTitle()) {
+//    size_t lvlShift = 0;
+//    auto menu = BocchiApplication::menuMap->equal_range(Context::getContext()->getComponent<MainMenuCase>("MainMenuCase"));
+//    for (auto it = menu.first; it != menu.second; ++it) {
+//        if (this->currentState->rootMenuCase != Context::getContext()->getComponent<MainMenuCase>("MainMenuCase")) {
+//            if (!currentMenuCasePath.empty()) {
+//                if (it->second == currentMenuCasePath.top()) {
+//                    while (!currentMenuCasePath.empty()) {
+//                        for (int i = 0; i < lvlShift; ++i) std::cout << "\t";
+//                        print(currentMenuCasePath.top()->getTitle());
+//                        currentMenuCasePath.pop();
+//                        lvlShift++;
+//                    }
+//                    auto submenmu = BocchiApplication::menuMap->equal_range(this->currentState->rootMenuCase);
+//                    for (auto jt = submenmu.first; jt != submenmu.second; ++jt) {
+//                        for (int i = 0; i < currentState->lvl; ++i) std::cout << "\t";
+//                        if (jt->second->getTitle() == this->currentState->choosedMenuCase->getTitle()) {
+//
+//                            green_print(jt->second->getTitle());
+//                        } else
+//                            print(jt->second->getTitle());
+//
+//                    }
+//                }
+//            }
+//        }
+//        if (it->second->getTitle() == this->currentState->choosedMenuCase->getTitle()) {
+//            green_print(it->second->getTitle());
+//        } else print(it->second->getTitle());
+//    }
 
-                            green_print(jt->second->getTitle());
-                        } else
-                            print(jt->second->getTitle());
 
-                    }
-                }
-            }
-        }
-        if (it->second->getTitle() == this->currentState->choosedMenuCase->getTitle()) {
-            green_print(it->second->getTitle());
-        } else print(it->second->getTitle());
+    auto submenmu = BocchiApplication::menuMap->equal_range(this->currentState->rootMenuCase);
+    for (auto jt = submenmu.first; jt != submenmu.second; ++jt) {
+        if (jt->second->getTitle() == this->currentState->choosedMenuCase->getTitle()) {
+            green_print(jt->second->getTitle());
+        } else  print(jt->second->getTitle());
     }
 }
 

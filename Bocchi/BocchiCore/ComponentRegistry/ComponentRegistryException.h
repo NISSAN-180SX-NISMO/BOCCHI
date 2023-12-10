@@ -1,7 +1,9 @@
 #pragma once
 #ifndef BOCCHI_COMPONENTREGISTRYEXCEPTION_H
 #define BOCCHI_COMPONENTREGISTRYEXCEPTION_H
+#ifndef LISING
 #include <exception>
+#endif
 
 class ComponentRegistryException : public std::exception {
 private:

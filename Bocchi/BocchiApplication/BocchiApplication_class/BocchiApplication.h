@@ -1,8 +1,15 @@
 #pragma once
 #ifndef BOCCHI_BOCCHIAPPLICATION_H
 #define BOCCHI_BOCCHIAPPLICATION_H
+#ifndef LISING
 #include <memory>
 #include "map"
+#include <Windows.h>
+#include <memory>
+#include <utility>
+#include <algorithm>
+#include <queue>
+#endif
 #include "../../BocchiCore/Context_class/Context.h"
 #include "../MenuCase.h"
 #include "../IncludeComponents.h"
@@ -11,7 +18,6 @@
 #include "../../EventSystem/ObservedInterface.h"
 #include "../BocchiApplicationStateUpdater.h"
 #include "../../EventSystem/ConsoleHandler.h"
-#include <Windows.h>
 
 #define print(x) printf((x + "\n").c_str())
 #define green_print(x) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_GREEN | FOREGROUND_INTENSITY); print(x); SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_GREEN)

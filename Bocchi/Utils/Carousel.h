@@ -1,8 +1,9 @@
 #ifndef BOCCHI_CAROUSEL_H
 #define BOCCHI_CAROUSEL_H
-
+#ifndef LISING
 #include <vector>
 #include <memory>
+#endif
 
 template <class Data>
 class Carousel {

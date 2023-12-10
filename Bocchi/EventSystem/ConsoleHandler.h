@@ -1,9 +1,10 @@
 #ifndef BOCCHI_CONSOLEHANDLER_H
 #define BOCCHI_CONSOLEHANDLER_H
-
+#ifndef LISING
 #include <memory>
 #include <utility>
 #include <conio.h>
+#endif
 #include "ObservedInterface.h"
 
 class ConsoleHandler : public ObservedInterface {

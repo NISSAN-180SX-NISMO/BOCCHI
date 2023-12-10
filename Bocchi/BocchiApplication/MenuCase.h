@@ -1,9 +1,10 @@
 #pragma once
 #ifndef BOCCHI_MENUCASE_H
 #define BOCCHI_MENUCASE_H
-
+#ifndef LISING
 #include <string>
 #include <memory>
+#endif
 #define NONE_PARENT "none_parent"
 #define NONE_TITLE ""
 
@@ -18,7 +19,20 @@ void exec() override { \
  \
 } \
 std::string getParent() override { \
-return parentName; \
+return #parentName; \
+} \
+}
+
+#define PAYLOADSUBMENU(name, title, parentName) \
+class name : public MenuCase { \
+public: \
+std::string getTitle() override { \
+return title; \
+} \
+ \
+void exec() override; \
+std::string getParent() override { \
+return #parentName; \
 } \
 }
 

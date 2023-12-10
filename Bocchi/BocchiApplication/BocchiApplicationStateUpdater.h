@@ -1,13 +1,15 @@
 #ifndef BOCCHI_BOCCHIAPPLICATIONSTATEUPDATER_H
 #define BOCCHI_BOCCHIAPPLICATIONSTATEUPDATER_H
 
+#ifndef LISING
 #include <utility>
 #include <map>
 #include <stack>
+#include "memory"
+#endif
 
 #include "../EventSystem/ObserverInterface.h"
 #include "MenuState.h"
-#include "memory"
 
 class BocchiApplicationStateUpdater : public ObserverInterface {
     std::shared_ptr<MenuState> state;

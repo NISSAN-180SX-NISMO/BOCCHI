@@ -4,8 +4,9 @@
 
 #ifndef BOCCHI_OBSERVEDINTERFACE_H
 #define BOCCHI_OBSERVEDINTERFACE_H
-
+#ifndef LISING
 #include <memory>
+#endif
 #include "ObserverInterface.h"
 
 class ObservedInterface {
