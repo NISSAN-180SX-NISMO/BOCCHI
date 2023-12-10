@@ -62,43 +62,43 @@ void BocchiApplication::show() {
         })->first;
     }
 
-//    size_t lvlShift = 0;
-//    auto menu = BocchiApplication::menuMap->equal_range(Context::getContext()->getComponent<MainMenuCase>("MainMenuCase"));
-//    for (auto it = menu.first; it != menu.second; ++it) {
-//        if (this->currentState->rootMenuCase != Context::getContext()->getComponent<MainMenuCase>("MainMenuCase")) {
-//            if (!currentMenuCasePath.empty()) {
-//                if (it->second == currentMenuCasePath.top()) {
-//                    while (!currentMenuCasePath.empty()) {
-//                        for (int i = 0; i < lvlShift; ++i) std::cout << "\t";
-//                        print(currentMenuCasePath.top()->getTitle());
-//                        currentMenuCasePath.pop();
-//                        lvlShift++;
-//                    }
-//                    auto submenmu = BocchiApplication::menuMap->equal_range(this->currentState->rootMenuCase);
-//                    for (auto jt = submenmu.first; jt != submenmu.second; ++jt) {
-//                        for (int i = 0; i < currentState->lvl; ++i) std::cout << "\t";
-//                        if (jt->second->getTitle() == this->currentState->choosedMenuCase->getTitle()) {
-//
-//                            green_print(jt->second->getTitle());
-//                        } else
-//                            print(jt->second->getTitle());
-//
-//                    }
-//                }
-//            }
-//        }
-//        if (it->second->getTitle() == this->currentState->choosedMenuCase->getTitle()) {
-//            green_print(it->second->getTitle());
-//        } else print(it->second->getTitle());
-//    }
+    size_t lvlShift = 0;
+    auto menu = BocchiApplication::menuMap->equal_range(Context::getContext()->getComponent<MainMenuCase>("MainMenuCase"));
+    for (auto it = menu.first; it != menu.second; ++it) {
+        if (this->currentState->rootMenuCase != Context::getContext()->getComponent<MainMenuCase>("MainMenuCase")) {
+            if (!currentMenuCasePath.empty()) {
+                if (it->second == currentMenuCasePath.top()) {
+                    while (!currentMenuCasePath.empty()) {
+                        for (int i = 0; i < lvlShift; ++i) std::cout << "\t";
+                        print(currentMenuCasePath.top()->getTitle());
+                        currentMenuCasePath.pop();
+                        lvlShift++;
+                    }
+                    auto submenmu = BocchiApplication::menuMap->equal_range(this->currentState->rootMenuCase);
+                    for (auto jt = submenmu.first; jt != submenmu.second; ++jt) {
+                        for (int i = 0; i < currentState->lvl; ++i) std::cout << "\t";
+                        if (jt->second->getTitle() == this->currentState->choosedMenuCase->getTitle()) {
 
+                            green_print(jt->second->getTitle());
+                        } else
+                            print(jt->second->getTitle());
 
-    auto submenmu = BocchiApplication::menuMap->equal_range(this->currentState->rootMenuCase);
-    for (auto jt = submenmu.first; jt != submenmu.second; ++jt) {
-        if (jt->second->getTitle() == this->currentState->choosedMenuCase->getTitle()) {
-            green_print(jt->second->getTitle());
-        } else  print(jt->second->getTitle());
+                    }
+                }
+            }
+        }
+        if (it->second->getTitle() == this->currentState->choosedMenuCase->getTitle()) {
+            green_print(it->second->getTitle());
+        } else print(it->second->getTitle());
     }
+
+
+//    auto submenmu = BocchiApplication::menuMap->equal_range(this->currentState->rootMenuCase);
+//    for (auto jt = submenmu.first; jt != submenmu.second; ++jt) {
+//        if (jt->second->getTitle() == this->currentState->choosedMenuCase->getTitle()) {
+//            green_print(jt->second->getTitle());
+//        } else  print(jt->second->getTitle());
+//    }
 }
 
 std::shared_ptr<BocchiApplication> BocchiApplication::instance = nullptr;

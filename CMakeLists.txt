@@ -30,7 +30,6 @@ add_executable(Bocchi main.cpp
         MainMenuCase.h
         Bocchi/BocchiCore/ComponentRegistry/Object.h
         Bocchi/BocchiApplication/IncludeComponents.h
-        Bocchi/EventSystem/Event.h
         Bocchi/EventSystem/ConsoleHandler.h
         Bocchi/EventSystem/ObservedInterface.h
         Bocchi/EventSystem/ObserverInterface.h
