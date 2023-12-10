@@ -8,6 +8,7 @@
 #include "../Bocchi/BocchiCore/ComponentRegistry/ComponentRegistry.h"
 #include "../Bocchi/BocchiApplication/MenuCase.h"
 
+
 COMPONENT(TestMenu2);
 class TestMenu2 : public MenuCase {
 public:
@@ -23,5 +24,21 @@ public:
         return "MainMenuCase";
     }
 };
+
+
+COMPONENT(TestCase4);
+SUBMENU(TestCase4, "4) Fourth menu case", "MainMenuCase");
+
+COMPONENT(TestCase5);
+SUBMENU(TestCase5, "5) Fifth menu case", "TestMenu2");
+
+COMPONENT(TestCase6);
+SUBMENU(TestCase6, "6) Sixth menu case", "TestMenu2");
+
+COMPONENT(TestCase7);
+SUBMENU(TestCase7, "7) Seventh menu case", "TestCase6");
+
+COMPONENT(TestCase8);
+SUBMENU(TestCase8, "8) Eighth menu case", "TestCase6");
 
 #endif //BOCCHI_TESTCASE2_H

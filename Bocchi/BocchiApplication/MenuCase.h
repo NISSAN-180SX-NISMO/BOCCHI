@@ -7,6 +7,21 @@
 #define NONE_PARENT "none_parent"
 #define NONE_TITLE ""
 
+#define SUBMENU(name, title, parentName) \
+class name : public MenuCase { \
+public: \
+std::string getTitle() override { \
+return title; \
+} \
+ \
+void exec() override { \
+ \
+} \
+std::string getParent() override { \
+return parentName; \
+} \
+}
+
 class MenuCase {
 private:
 public:

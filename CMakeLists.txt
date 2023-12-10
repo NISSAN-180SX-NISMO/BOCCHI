@@ -39,5 +39,7 @@ add_executable(Bocchi main.cpp
         Bocchi/BocchiApplication/BocchiApplicationStateUpdater.h
         Bocchi/BocchiApplication/MenuState.h
         Bocchi/Utils/Carousel.h
-        TestCases/TestCase3.h)
+        TestCases/TestCase3.h
+        TestCases/TestCase2_1.h
+        TestCases/TestCase2_2.h)
 add_dependencies(Bocchi scan_components)

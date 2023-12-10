@@ -43,8 +43,12 @@ public:
         return vector.empty();
     }
 
+    size_t getCurrentIndex() {
+        return this->currentIndex;
+    }
     Carousel(std::pair<std::_Rb_tree_iterator<std::pair<MenuCase *const, MenuCase *>>,
-             std::_Rb_tree_iterator<std::pair<MenuCase *const, MenuCase *>>> pair1) {
+             std::_Rb_tree_iterator<std::pair<MenuCase *const, MenuCase *>>> pair1, size_t currentIndex = 0) {
+        this->currentIndex = currentIndex;
         for (auto it = pair1.first; it != pair1.second; it++) {
             this->append(it->second);
         }

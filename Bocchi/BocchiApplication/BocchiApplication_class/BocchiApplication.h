@@ -18,16 +18,18 @@
 
 class BocchiApplication {
 private:
+
     std::shared_ptr<Context> context;
     static std::shared_ptr<std::multimap<MenuCase*, MenuCase*>> menuMap;
     std::vector<MenuCase*> buildMenuCaseVector();
     void buildMenuMap(const std::vector<MenuCase*>&);
     std::shared_ptr<MenuState> currentState = std::make_shared<MenuState>();
-    std::shared_ptr<ObserverInterface> menuStateUpdater = std::make_shared<BocchiApplicationStateUpdater>(this->currentState, BocchiApplication::menuMap);
+    std::shared_ptr<ObserverInterface> menuStateUpdater =
+            std::make_shared<BocchiApplicationStateUpdater>(this->currentState, BocchiApplication::menuMap);
     std::shared_ptr<ConsoleHandler> consoleHandler;
     void show();
-    explicit BocchiApplication(MenuCase* mainCase);
     static std::shared_ptr<BocchiApplication> instance;
+    explicit BocchiApplication(MenuCase* mainCase);
 public:
     static std::shared_ptr<BocchiApplication> getInstance(MenuCase* mainCase);
     static std::shared_ptr<BocchiApplication> getInstance();
