@@ -1,7 +1,9 @@
 #pragma once
 #ifndef BOCCHI_CONTEXT_H
 #define BOCCHI_CONTEXT_H
+#ifndef LISING
 #include <memory>
+#endif
 #include "../ComponentRegistry/ComponentRegistry.h"
 
 typedef std::unordered_map<std::string, Object*> ContextMap;
