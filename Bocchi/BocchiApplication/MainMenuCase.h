@@ -1,8 +1,8 @@
 #pragma once
 #ifndef BOCCHI_MAINMENUCASE_H
 #define BOCCHI_MAINMENUCASE_H
-#include "Bocchi/BocchiApplication/MenuCase.h"
-#include "Bocchi/BocchiCore/ComponentRegistry/ComponentRegistry.h"
+#include "MenuCase.h"
+#include "../BocchiCore/ComponentRegistry/ComponentRegistry.h"
 
 COMPONENT(MainMenuCase);
 class MainMenuCase : public MenuCase {

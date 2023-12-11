@@ -13,7 +13,7 @@
 #include "../MenuState.h"
 #include "../../EventSystem/ObserverInterface.h"
 #include "../BocchiApplicationStateUpdater.h"
-#include "../../../MainMenuCase.h"
+#include "../MainMenuCase.h"
 
 class BocchiApplicationPrinterAsList : public BocchiApplicationPrinterInterface {
 private:

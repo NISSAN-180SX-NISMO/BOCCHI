@@ -27,7 +27,7 @@ add_executable(Bocchi main.cpp
         Bocchi/BocchiApplication/MenuCase.h
         Bocchi/BocchiApplication/BocchiApplication_class/BocchiApplication.h
         Bocchi/BocchiApplication/BocchiApplication_class/BocchiApplication.cpp
-        MainMenuCase.h
+        Bocchi/BocchiApplication/MainMenuCase.h
         Bocchi/BocchiCore/ComponentRegistry/Object.h
         Bocchi/BocchiApplication/IncludeComponents.h
         Bocchi/EventSystem/ConsoleHandler.h
@@ -41,5 +41,12 @@ add_executable(Bocchi main.cpp
         Bocchi/BocchiApplication/Printers/BocchiApplicationPrinterInterface.h
         Bocchi/BocchiApplication/Printers/BocchiApplicationPrinterAsTree.h
         Bocchi/BocchiApplication/Printers/BocchiApplicationPrinterAsList.h
+        Sin/Makloren.h
+        Sin/Bhaskara.h
+        Sin/CORDIC.h
+        Sin/Utils.h
+        MathParser/MathParser.h
+        MathParser/PostfixNotationComputer.h
+        MathParser/PostfixNotationConverter.h
 )
 add_dependencies(Bocchi scan_components)
