@@ -38,5 +38,8 @@ add_executable(Bocchi main.cpp
         Bocchi/Utils/Carousel.h
         TestCases/MenuCases.h
         TestCases/MenuCases.cpp
+        Bocchi/BocchiApplication/Printers/BocchiApplicationPrinterInterface.h
+        Bocchi/BocchiApplication/Printers/BocchiApplicationPrinterAsTree.h
+        Bocchi/BocchiApplication/Printers/BocchiApplicationPrinterAsList.h
 )
 add_dependencies(Bocchi scan_components)

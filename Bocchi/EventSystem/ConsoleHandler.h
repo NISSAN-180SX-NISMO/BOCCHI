@@ -19,6 +19,7 @@ public:
         notify(getKey());
     }
     void notify(KEY key) override {
+
         this->observer->update(key);
     }
 };
